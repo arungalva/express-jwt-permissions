@@ -39,6 +39,12 @@ test('valid multiple permissions', function (t) {
   guard.check(['foo', 'bar'])(req, res, t.error)
 })
 
+test('valid any of the permissions in an array', function(t) {
+  t.plan(1);
+  var req = { user: { permissions: ['ping', 'foo'] } }
+  guard.checkAny(['foo', 'bar'])(req, res, t.error)
+}),
+
 test('valid permissions [String] notation', function (t) {
   t.plan(1)
   var req = { user: { permissions: ['ping'] } }
